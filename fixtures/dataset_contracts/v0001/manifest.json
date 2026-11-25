@@ -1,0 +1,28 @@
+{
+  "fixture_set": "review-demo-synthetic-v1",
+  "contract_version": "review-dataset-snapshot/v1",
+  "tenant_key": "tenant-synthetic-alpha",
+  "source_mode": "synthetic",
+  "created_at": "2026-06-22T00:00:00Z",
+  "canonicalization": "RFC8785-compatible JSON; SHA-256 lowercase hex",
+  "contains_real_data": false,
+  "files": [
+    {
+      "path": "review_items.json",
+      "purpose": "valid and fail-closed snapshot inputs"
+    },
+    {
+      "path": "expected_scenarios.json",
+      "purpose": "domain validation and idempotency expectations"
+    },
+    {
+      "path": "agreement_metrics.json",
+      "purpose": "independently specified agreement-metric examples"
+    }
+  ],
+  "security_assertions": {
+    "contains_source_path": false,
+    "url_hosts_are_reserved_invalid": true,
+    "untrusted_text_is_intentional": true
+  }
+}

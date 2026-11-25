@@ -1,0 +1,10 @@
+title = "Review Platform secret checks"
+[extend]
+useDefault = true
+[allowlist]
+description = "Explicit disposable local database and test-key placeholders"
+regexes = [
+  'local-demo-password',
+  'disposable-test-password',
+  '(test|openapi)-(session|activation|rate-limit|audit)-key-[0-9]+',
+]

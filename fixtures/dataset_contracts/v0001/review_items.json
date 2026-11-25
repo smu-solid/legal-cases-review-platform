@@ -1,0 +1,365 @@
+{
+  "contract_version": "review-dataset-snapshot/v1",
+  "fixture_set": "review-demo-synthetic-v1",
+  "tenant_key": "tenant-synthetic-alpha",
+  "items": [
+    {
+      "snapshot_id": "00000000-0000-7000-8000-000000000001",
+      "captured_at": "2026-06-22T00:00:00Z",
+      "source_revision": "synthetic-v1",
+      "source_mode": "synthetic",
+      "external_item_key": "case:CASE000000000001:field:citation_neutral",
+      "target": {
+        "external_id": "CASE000000000001",
+        "table": "cases",
+        "field": "citation_neutral"
+      },
+      "source_document": {
+        "external_id": "DOC0000000000001",
+        "source_system": "sample_a",
+        "sha256": "1111111111111111111111111111111111111111111111111111111111111111",
+        "content_type": "text/plain",
+        "source_url": "https://example.invalid/judgments/1"
+      },
+      "extraction": {
+        "run_id": "RUN0000000000001",
+        "extractor_version": "synthetic-1.0",
+        "registry_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "tier": "1A",
+        "extractor_name": "synthetic_structural",
+        "value": "[2024] SGCA 1",
+        "display_value": "[2024] SGCA 1",
+        "validation_status": null
+      },
+      "evidence": [
+        {
+          "ordinal": 0,
+          "kind": "paragraph",
+          "location": "paragraph:1",
+          "snippet": "Neutral Citation: [2024] SGCA 1",
+          "selector": "p.judgment-header",
+          "line_start": 1,
+          "line_end": 1,
+          "char_start": 18,
+          "char_end": 31,
+          "source_hash": "1111111111111111111111111111111111111111111111111111111111111111"
+        }
+      ],
+      "validator_candidates": [
+        {
+          "display_label": "A",
+          "validator_kind": "deterministic",
+          "validator_name": "synthetic_grounding",
+          "validator_version": "1.0",
+          "raw_verdict": "supported",
+          "normalized_verdict": "supported",
+          "value": "[2024] SGCA 1",
+          "rationale": "Exact source match.",
+          "supporting_quote": "[2024] SGCA 1",
+          "requires_human_review": true
+        },
+        {
+          "display_label": "B",
+          "validator_kind": "model",
+          "validator_name": "synthetic_model",
+          "validator_version": "model-1/prompt-1",
+          "raw_verdict": "partially_supported",
+          "normalized_verdict": "partially_supported",
+          "value": "[2024] SGCA 7",
+          "rationale": "Citation family found but number differs.",
+          "supporting_quote": "[2024] SGCA 1",
+          "requires_human_review": true
+        }
+      ]
+    },
+    {
+      "snapshot_id": "00000000-0000-7000-8000-000000000002",
+      "captured_at": "2026-06-22T00:00:00Z",
+      "source_revision": "synthetic-v1",
+      "source_mode": "synthetic",
+      "external_item_key": "case:CASE000000000002:field:title_raw",
+      "target": {
+        "external_id": "CASE000000000002",
+        "table": "cases",
+        "field": "title_raw"
+      },
+      "source_document": {
+        "external_id": "DOC0000000000002",
+        "source_system": "sample_b",
+        "sha256": "2222222222222222222222222222222222222222222222222222222222222222",
+        "content_type": "text/plain",
+        "source_url": "https://example.invalid/judgments/2"
+      },
+      "extraction": {
+        "run_id": "RUN0000000000002",
+        "extractor_version": "synthetic-1.0",
+        "registry_hash": null,
+        "tier": "2",
+        "extractor_name": "synthetic_parser",
+        "value": "A v B",
+        "display_value": "A v B",
+        "validation_status": "REVIEW"
+      },
+      "evidence": [
+        {
+          "ordinal": 0,
+          "kind": "line",
+          "location": "line:4",
+          "snippet": "Correct title: Alpha v Beta",
+          "selector": null,
+          "line_start": 4,
+          "line_end": 4,
+          "char_start": 15,
+          "char_end": 27,
+          "source_hash": "2222222222222222222222222222222222222222222222222222222222222222"
+        }
+      ],
+      "validator_candidates": [
+        {
+          "display_label": "A",
+          "validator_kind": "deterministic",
+          "validator_name": "synthetic_grounding",
+          "validator_version": "1.0",
+          "raw_verdict": "unsupported",
+          "normalized_verdict": "unsupported",
+          "value": "A v B",
+          "rationale": "Abbreviated value is not the source title.",
+          "supporting_quote": "Alpha v Beta",
+          "requires_human_review": true
+        },
+        {
+          "display_label": "B",
+          "validator_kind": "model",
+          "validator_name": "synthetic_model",
+          "validator_version": "model-1/prompt-1",
+          "raw_verdict": "supported",
+          "normalized_verdict": "supported",
+          "value": "Alpha v Beta",
+          "rationale": "Full title is locatable.",
+          "supporting_quote": "Alpha v Beta",
+          "requires_human_review": true
+        }
+      ]
+    },
+    {
+      "snapshot_id": "00000000-0000-7000-8000-000000000003",
+      "captured_at": "2026-06-22T00:00:00Z",
+      "source_revision": "synthetic-v1",
+      "source_mode": "synthetic",
+      "external_item_key": "case:CASE000000000003:field:subject",
+      "target": {
+        "external_id": "CASE000000000003",
+        "table": "cases",
+        "field": "subject"
+      },
+      "source_document": {
+        "external_id": "DOC0000000000003",
+        "source_system": "sample_a",
+        "sha256": "3333333333333333333333333333333333333333333333333333333333333333",
+        "content_type": "text/html",
+        "source_url": "https://example.invalid/judgments/3"
+      },
+      "extraction": {
+        "run_id": "RUN0000000000003",
+        "extractor_version": "synthetic-1.0",
+        "registry_hash": null,
+        "tier": "3",
+        "extractor_name": "synthetic_parser",
+        "value": null,
+        "display_value": "(none)",
+        "validation_status": null
+      },
+      "evidence": [
+        {
+          "ordinal": 0,
+          "kind": "html_tag",
+          "location": "body",
+          "snippet": "<script>alert('fixture')</script> 判決 — no subject label",
+          "selector": "body",
+          "line_start": null,
+          "line_end": null,
+          "char_start": null,
+          "char_end": null,
+          "source_hash": "3333333333333333333333333333333333333333333333333333333333333333"
+        }
+      ],
+      "validator_candidates": [
+        {
+          "display_label": "A",
+          "validator_kind": "deterministic",
+          "validator_name": "synthetic_grounding",
+          "validator_version": "1.0",
+          "raw_verdict": "not_enough_context",
+          "normalized_verdict": "not_enough_context",
+          "value": null,
+          "rationale": "No locatable subject.",
+          "supporting_quote": null,
+          "requires_human_review": true
+        },
+        {
+          "display_label": "B",
+          "validator_kind": "model",
+          "validator_name": "synthetic_model",
+          "validator_version": "model-1/prompt-1",
+          "raw_verdict": "not_enough_context",
+          "normalized_verdict": "not_enough_context",
+          "value": null,
+          "rationale": "Evidence is insufficient.",
+          "supporting_quote": null,
+          "requires_human_review": true
+        }
+      ]
+    },
+    {
+      "snapshot_id": "00000000-0000-7000-8000-000000000004",
+      "captured_at": "2026-06-22T00:00:00Z",
+      "source_revision": "synthetic-v1",
+      "source_mode": "synthetic",
+      "external_item_key": "case:CASE000000000004:field:proceedings_type",
+      "target": {
+        "external_id": "CASE000000000004",
+        "table": "cases",
+        "field": "proceedings_type"
+      },
+      "source_document": {
+        "external_id": "DOC0000000000004",
+        "source_system": "sample_a",
+        "sha256": "4444444444444444444444444444444444444444444444444444444444444444",
+        "content_type": "text/plain",
+        "source_url": "https://example.invalid/judgments/4"
+      },
+      "extraction": {
+        "run_id": "RUN0000000000004",
+        "extractor_version": "synthetic-1.0",
+        "registry_hash": null,
+        "tier": "3",
+        "extractor_name": "synthetic_parser",
+        "value": "appeal",
+        "display_value": "appeal",
+        "validation_status": null
+      },
+      "evidence": [],
+      "validator_candidates": [
+        {
+          "display_label": "A",
+          "validator_kind": "future_validator",
+          "validator_name": "synthetic_unknown",
+          "validator_version": "2.0",
+          "raw_verdict": "maybe_supported",
+          "normalized_verdict": "unrecognized",
+          "value": "appeal",
+          "rationale": "Intentional fail-closed fixture.",
+          "supporting_quote": null,
+          "requires_human_review": true
+        },
+        {
+          "display_label": "B",
+          "validator_kind": "model",
+          "validator_name": "synthetic_model",
+          "validator_version": "model-1/prompt-1",
+          "raw_verdict": "supported",
+          "normalized_verdict": "supported",
+          "value": "appeal",
+          "rationale": "Value asserted without evidence.",
+          "supporting_quote": null,
+          "requires_human_review": true
+        }
+      ]
+    },
+    {
+      "snapshot_id": "00000000-0000-7000-8000-000000000005",
+      "captured_at": "2026-06-22T00:00:00Z",
+      "source_revision": "synthetic-v1",
+      "source_mode": "synthetic",
+      "external_item_key": "case:CASE000000000005:field:disposition_proc",
+      "target": {"external_id": "CASE000000000005", "table": "cases", "field": "disposition_proc"},
+      "source_document": {
+        "external_id": "DOC0000000000005",
+        "source_system": "sample_a",
+        "sha256": "5555555555555555555555555555555555555555555555555555555555555555",
+        "content_type": "text/plain",
+        "source_url": "https://example.invalid/judgments/5"
+      },
+      "extraction": {
+        "run_id": "RUN0000000000005",
+        "extractor_version": "synthetic-1.0",
+        "registry_hash": null,
+        "tier": "1A",
+        "extractor_name": "synthetic_structural",
+        "value": "appeal dismissed",
+        "display_value": "appeal dismissed",
+        "validation_status": "VALID"
+      },
+      "evidence": [{
+        "ordinal": 0,
+        "kind": "paragraph",
+        "location": "paragraph:42",
+        "snippet": "For these reasons, the appeal is dismissed.",
+        "selector": "p#p42",
+        "line_start": 210,
+        "line_end": 210,
+        "char_start": 23,
+        "char_end": 42,
+        "source_hash": "5555555555555555555555555555555555555555555555555555555555555555"
+      }],
+      "validator_candidates": [
+        {
+          "display_label": "A", "validator_kind": "deterministic",
+          "validator_name": "synthetic_grounding", "validator_version": "1.0",
+          "raw_verdict": "supported", "normalized_verdict": "supported",
+          "value": "appeal dismissed", "rationale": "Exact disposition is present.",
+          "supporting_quote": "the appeal is dismissed", "requires_human_review": true
+        },
+        {
+          "display_label": "B", "validator_kind": "model",
+          "validator_name": "synthetic_model", "validator_version": "model-1/prompt-1",
+          "raw_verdict": "supported", "normalized_verdict": "supported",
+          "value": "appeal dismissed", "rationale": "Exact disposition is present.",
+          "supporting_quote": "the appeal is dismissed", "requires_human_review": true
+        }
+      ]
+    },
+    {
+      "snapshot_id": "00000000-0000-7000-8000-000000000006",
+      "captured_at": "2026-06-22T00:00:00Z",
+      "source_revision": "synthetic-v1",
+      "source_mode": "synthetic",
+      "external_item_key": "case:CASE000000000006:field:court_id",
+      "target": {"external_id": "CASE000000000006", "table": "cases", "field": "court_id"},
+      "source_document": {
+        "external_id": "DOC0000000000006",
+        "source_system": "sample_b",
+        "sha256": "6666666666666666666666666666666666666666666666666666666666666666",
+        "content_type": "text/plain",
+        "source_url": "https://example.invalid/judgments/6"
+      },
+      "extraction": {
+        "run_id": "RUN0000000000006", "extractor_version": "synthetic-1.0",
+        "registry_hash": null, "tier": "2", "extractor_name": "synthetic_parser",
+        "value": "SGHC", "display_value": "SGHC", "validation_status": "REVIEW"
+      },
+      "evidence": [{
+        "ordinal": 0, "kind": "line", "location": "line:2",
+        "snippet": "IN THE COURT OF APPEAL", "selector": null,
+        "line_start": 2, "line_end": 2, "char_start": 7, "char_end": 22,
+        "source_hash": "6666666666666666666666666666666666666666666666666666666666666666"
+      }],
+      "validator_candidates": [
+        {
+          "display_label": "A", "validator_kind": "deterministic",
+          "validator_name": "synthetic_grounding", "validator_version": "1.0",
+          "raw_verdict": "unsupported", "normalized_verdict": "unsupported",
+          "value": "SGHC", "rationale": "Court does not match source.",
+          "supporting_quote": "COURT OF APPEAL", "requires_human_review": true
+        },
+        {
+          "display_label": "B", "validator_kind": "model",
+          "validator_name": "synthetic_model", "validator_version": "model-1/prompt-1",
+          "raw_verdict": "unsupported", "normalized_verdict": "unsupported",
+          "value": "SGDC", "rationale": "Suggested court also does not match source.",
+          "supporting_quote": "COURT OF APPEAL", "requires_human_review": true
+        }
+      ]
+    }
+  ]
+}

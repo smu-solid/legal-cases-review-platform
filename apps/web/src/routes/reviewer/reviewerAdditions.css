@@ -1,0 +1,121 @@
+.field-item.add-item-row {
+  display: block;
+  width: 100%;
+  background: #1764d7;
+  color: white;
+  border-color: #1764d7;
+  text-align: left;
+  font-weight: 600;
+}
+.field-item.add-item-row:hover {
+  background: #1254ba;
+}
+.added-item-fields {
+  border: 0;
+  padding: 0;
+  margin: 0;
+  min-width: 0;
+  display: grid;
+  gap: 1rem;
+}
+.added-item-fields label {
+  display: grid;
+  gap: 0.4rem;
+}
+.added-submit-hint {
+  position: relative;
+  display: inline-flex;
+}
+.added-submit-hint [role="tooltip"] {
+  display: none;
+  position: absolute;
+  bottom: 100%;
+  right: 0;
+  width: 240px;
+  background: #17233a;
+  color: white;
+  padding: 0.6rem;
+  border-radius: 0.4rem;
+  z-index: 10;
+}
+.added-submit-hint:hover [role="tooltip"],
+.added-submit-hint:focus-within [role="tooltip"] {
+  display: block;
+}
+
+.added-item-pane {
+  align-content: start;
+  grid-auto-rows: max-content;
+}
+
+.source-highlight-superseded {
+  background: #fff7d8;
+  color: #706b5c;
+  border-bottom: 1px dashed #9a8754;
+}
+.source-highlight-selected.source-highlight-current {
+  text-decoration-style: double;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+}
+.provenance-context-legend {
+  font-size: 0.8rem;
+  padding: 0.5rem 0.75rem;
+}
+.provenance-context-legend p {
+  margin: 0 0 0.3rem;
+}
+.provenance-context-legend ul {
+  max-height: 10rem;
+  overflow-y: auto;
+}
+.citation-duplicate-feedback label {
+  display: grid;
+  gap: 0.4rem;
+}
+
+.citation-visibility-toggle.source-expand-toggle,
+.citation-visibility-toggle.source-expand-toggle:hover,
+.citation-visibility-toggle.source-expand-toggle:focus-visible {
+  background: #ffffff;
+  color: #0b1f41;
+}
+.selection-add-citation.primary-button {
+  position: fixed;
+  z-index: 35;
+  min-height: 0;
+  height: auto;
+  width: max-content;
+  padding: 3px 6px;
+  font-size: 0.78rem;
+  line-height: 1.2;
+  white-space: nowrap;
+  box-shadow: 0 2px 8px #17233a33;
+}
+.citation-visibility-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.citation-toggle-track {
+  width: 28px;
+  height: 16px;
+  border-radius: 10px;
+  background: #8796a8;
+  padding: 2px;
+}
+.citation-toggle-track::after {
+  content: "";
+  display: block;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: white;
+}
+.citation-visibility-toggle[aria-checked="true"] .citation-toggle-track {
+  background: #428dd0;
+}
+.citation-visibility-toggle[aria-checked="true"] .citation-toggle-track::after {
+  transform: translateX(12px);
+}

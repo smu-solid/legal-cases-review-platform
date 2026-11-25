@@ -1,0 +1,82 @@
+{
+  "fixture_set": "review-demo-synthetic-v1",
+  "scenarios": [
+    {
+      "id": "candidate_a_preferred",
+      "snapshot_id": "00000000-0000-7000-8000-000000000001",
+      "submission": {"outcome": "candidate_a_preferred", "comment": null},
+      "expected": "accepted"
+    },
+    {
+      "id": "candidate_b_preferred",
+      "snapshot_id": "00000000-0000-7000-8000-000000000002",
+      "submission": {"outcome": "candidate_b_preferred", "comment": null},
+      "expected": "accepted"
+    },
+    {
+      "id": "equivalent_supported",
+      "snapshot_id": "00000000-0000-7000-8000-000000000005",
+      "submission": {"outcome": "equivalent_supported", "comment": null},
+      "expected": "accepted_when_both_assessments_correct"
+    },
+    {
+      "id": "both_wrong_requires_comment",
+      "snapshot_id": "00000000-0000-7000-8000-000000000006",
+      "submission": {"outcome": "both_wrong", "comment": ""},
+      "expected": "rejected_comment_required"
+    },
+    {
+      "id": "correction_requires_comment",
+      "snapshot_id": "00000000-0000-7000-8000-000000000006",
+      "submission": {"outcome": "both_wrong", "corrected_value": "SGCA", "comment": null},
+      "expected": "rejected_comment_required"
+    },
+    {
+      "id": "unsupported_requires_comment",
+      "snapshot_id": "00000000-0000-7000-8000-000000000003",
+      "submission": {"outcome": "unsupported_or_not_locatable", "comment": null},
+      "expected": "rejected_comment_required"
+    },
+    {
+      "id": "exceptional_skip_requires_comment",
+      "snapshot_id": "00000000-0000-7000-8000-000000000003",
+      "submission": {"outcome": "exceptional_skip", "comment": ""},
+      "expected": "rejected_comment_required"
+    },
+    {
+      "id": "untrusted_text_escaped",
+      "snapshot_id": "00000000-0000-7000-8000-000000000003",
+      "expected": "parsed_as_text_never_executed"
+    },
+    {
+      "id": "unknown_verdict_blocks_publish",
+      "snapshot_id": "00000000-0000-7000-8000-000000000004",
+      "expected": "imported_unsealed_but_publication_rejected"
+    },
+    {
+      "id": "idempotent_manifest_replay",
+      "operation": "import_manifest_twice",
+      "expected": "one_snapshot_set_same_response"
+    },
+    {
+      "id": "digest_mismatch",
+      "operation": "change_item_after_manifest_digest",
+      "expected": "rejected_no_partial_seal"
+    },
+    {
+      "id": "cross_tenant_denied",
+      "operation": "tenant_beta_reviewer_reads_tenant_alpha_task",
+      "expected": "not_found_and_audited_no_data_leak"
+    },
+    {
+      "id": "tenant_admin_comment_export_denied",
+      "operation": "tenant_alpha_user_admin_exports_reviewer_comments",
+      "expected": "forbidden"
+    },
+    {
+      "id": "super_admin_comment_export",
+      "operation": "global_super_admin_exports_identity_and_comments_with_second_approval",
+      "expected": "encrypted_expiring_export_and_complete_audit"
+    }
+  ]
+}

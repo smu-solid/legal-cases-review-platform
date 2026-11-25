@@ -1,0 +1,55 @@
+{
+  "metric_contract_version": "review-agreement/v1",
+  "tenant_key": "tenant-synthetic-alpha",
+  "cohorts": [
+    {
+      "id": "balanced_perfect",
+      "pairs": [
+        ["supported", "supported"],
+        ["supported", "supported"],
+        ["unsupported", "unsupported"],
+        ["unsupported", "unsupported"]
+      ],
+      "expected": {
+        "n": 4,
+        "observed_agreement": 1.0,
+        "expected_agreement": 0.5,
+        "cohen_kappa": 1.0
+      }
+    },
+    {
+      "id": "one_adjacent_disagreement",
+      "pairs": [
+        ["supported", "supported"],
+        ["supported", "partially_supported"],
+        ["partially_supported", "partially_supported"],
+        ["unsupported", "unsupported"]
+      ],
+      "expected": {
+        "n": 4,
+        "observed_agreement": 0.75,
+        "expected_agreement": 0.3125,
+        "cohen_kappa": 0.636364,
+        "quadratic_weighted_kappa_greater_than_unweighted": true
+      }
+    },
+    {
+      "id": "no_comparable_pairs",
+      "pairs": [],
+      "expected": {
+        "n": 0,
+        "cohen_kappa": null,
+        "status": "insufficient_data"
+      }
+    },
+    {
+      "id": "single_label_degenerate",
+      "pairs": [["supported", "supported"], ["supported", "supported"]],
+      "expected": {
+        "n": 2,
+        "status": "degenerate_single_label",
+        "warning_required": true
+      }
+    }
+  ]
+}

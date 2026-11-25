@@ -1,0 +1,30 @@
+name: review_platform_oss
+services:
+  postgres:
+    image: postgres:18-alpine
+    environment:
+      POSTGRES_DB: review_oss
+      POSTGRES_USER: review_oss
+      POSTGRES_PASSWORD: local-demo-password
+    ports: ["127.0.0.1:${DEMO_DB_PORT:-57432}:5432"]
+    volumes: ["review-data:/var/lib/postgresql"]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U review_oss -d review_oss"]
+      interval: 2s
+      timeout: 3s
+      retries: 30
+  postgres-test:
+    image: postgres:18-alpine
+    environment:
+      POSTGRES_DB: review_oss_test
+      POSTGRES_USER: review_oss_test
+      POSTGRES_PASSWORD: disposable-test-password
+    ports: ["127.0.0.1:57433:5432"]
+    tmpfs: ["/var/lib/postgresql"]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U review_oss_test -d review_oss_test"]
+      interval: 2s
+      timeout: 3s
+      retries: 30
+volumes:
+  review-data:
